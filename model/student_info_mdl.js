@@ -2,17 +2,17 @@ import mongoose, { mongo } from "mongoose";
 const std_schema = mongoose.Schema({
   std_name: {
     type: String,
-    require: true,
+    required: true,
     trim: true,
   },
   std_age: {
     type: Number,
-    require: true,
+    required: true,
   },
   fee: {
-    type: Number,
-    require: true,
-    // validate: (value) != 0,
+    type: mongoose.Decimal128,
+    required: true,
+    validate: (value) => value > 0,
   },
   created: {
     type: String,
