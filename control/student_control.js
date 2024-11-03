@@ -74,6 +74,32 @@ class student_ctrl {
       resp.send(error);
     }
   };
+
+  static delette_std_data = async (req, resp) => {
+    try {
+      if (
+        req.params.id == undefined ||
+        req.params.id.trim() == "" ||
+        !mongoose.Types.ObjectId.isValid(req.params.id)
+      ) {
+        resp.send(
+          `Valid ID required to delete record, you gave this = "${req.params.id}"`
+        );
+      } else {
+        const delete_record = await std_model.findByIdAndDelete(req.params.id, { new: true });
+        if (delete_record == null) {
+          console.log(`This Id does not exist > ${req.params.id}`);
+          resp.send(`This Id does not exist > ${req.params.id}`);
+        }else{
+          console.log(`This Id has been delete > ${req.params.id}`);
+          resp.send(`This Id has been delete > ${req.params.id}`);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      resp.send(error);
+    }
+  };
 }
 
 export default student_ctrl;
