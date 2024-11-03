@@ -91,8 +91,8 @@ class student_ctrl {
           console.log(`This Id does not exist > ${req.params.id}`);
           resp.send(`This Id does not exist > ${req.params.id}`);
         }else{
-          console.log(`This Id has been delete > ${req.params.id}`);
-          resp.send(`This Id has been delete > ${req.params.id}`);
+          console.log(`This Id has deleted > ${req.params.id}`);
+          resp.send(`This Id has deleted > ${req.params.id}`);
         }
       }
     } catch (error) {
