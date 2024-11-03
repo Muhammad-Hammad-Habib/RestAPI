@@ -10,7 +10,7 @@ const std_schema = mongoose.Schema({
     required: true,
   },
   fee: {
-    type: mongoose.Decimal128,
+    type: Number,
     required: true,
     validate: (value) => value > 0,
   },
